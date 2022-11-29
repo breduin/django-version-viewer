@@ -1,5 +1,6 @@
 from operator import itemgetter
 import pkg_resources
+import sys
 
 
 def get_pkg_url(d):
@@ -21,6 +22,11 @@ def list_package_versions():
     installed_packages = pkg_resources.WorkingSet()
     results = [{"package_name": i.key, "package_version": i.version,
                 "package_url": get_pkg_url(i)} for i in installed_packages]
+    # Add Python version
+    results.append(
+        {"package_name": "Python", "package_version": sys.version,
+                "package_url": 'https://docs.python.org/3/'}
+    )
     return sorted(results, key=itemgetter('package_name'))
 
 
