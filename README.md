@@ -15,6 +15,12 @@ This tool can be used in several ways. It provides:
 
 You may also configure which users have access to the link and endpoint.
 
+## Update for Django 4
+
+Urlpatters now use *re_path* instead deprecated *url*.
+
+The version on Python is added to the list of installed packages.
+
 ---------------------------------------
 ## Installation
 ---------------------------------------
@@ -39,7 +45,7 @@ Django Version Viewer needs to extend the `admin/index.html` and append it's url
 
     urlpatterns = [
         ...
-        url(r'^django_version_viewer/', include('django_version_viewer.urls')),
+        re_path(r'^django_version_viewer/', include('django_version_viewer.urls')),
         ...
     ]
 
